@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5story — Grant Finale</title>
+  <title>5 Story Labs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -156,6 +156,19 @@
       75% { clip-path: inset(70% 0 5% 0); transform: translate(2px, 2px); }
       75.5% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
       76%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    .powered-by {
+      margin-top: 0.4rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+    }
+
+    .powered-name {
+      color: var(--accent);
+      opacity: 0.7;
     }
 
     /* Typing tagline */
@@ -466,9 +479,10 @@
       <span class="hud-label">SYS.ONLINE</span>
       <span class="hud-dot"></span>
       <span class="hud-sep">/</span>
-      <span class="hud-label">NODE:5STORY</span>
+      <span class="hud-label">NODE:5STORYLABS</span>
     </div>
-    <h1 class="glitch" data-text="Grant Finale">Grant Finale</h1>
+    <h1 class="glitch" data-text="5 Story Labs">5 Story Labs</h1>
+    <p class="powered-by">powered by <span class="powered-name">Grant Finale</span></p>
     <p class="hero-tagline">
       <span class="typing-prefix">&gt;</span>
       <span id="typed-text"></span><span class="cursor">_</span>
@@ -501,13 +515,13 @@
   <footer class="status-bar">
     <div class="status-left">
       <span class="status-indicator"></span>
-      <span>5story.com</span>
+      <span>5storylabs.com</span>
     </div>
     <div class="status-center">
       <span id="clock">--:--:--</span>
     </div>
     <div class="status-right">
-      <span>Grant Finale</span>
+      <span>5 Story Labs</span>
       <span class="status-sep">|</span>
       <span>v1.0.0</span>
     </div>
@@ -637,7 +651,7 @@
 
     // ─── Projects ───
     const projects = [
-      // { name: "My App", desc: "Description", url: "https://...", tags: ["Next.js", "Postgres"] }
+      { name: "Insurance Lead Platform", desc: "Multi-step insurance quote forms with lead routing, funnel analytics, and admin dashboard.", url: "https://insurance.5story.com", tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"] }
     ];
 
     if (projects.length > 0) {
