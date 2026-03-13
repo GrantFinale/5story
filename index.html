@@ -4,197 +4,654 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5story — Grant Finale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1e1e1e;
-      --text: #e8e8e8;
-      --muted: #666;
-      --accent: #4f8ef7;
-      --accent-dim: #1a2d4f;
+      --bg: #050508;
+      --surface: rgba(10, 15, 30, 0.7);
+      --border: rgba(0, 255, 255, 0.08);
+      --text: #e0e8f0;
+      --muted: #4a5568;
+      --accent: #00f0ff;
+      --accent-dim: rgba(0, 240, 255, 0.08);
+      --accent-glow: rgba(0, 240, 255, 0.4);
+      --accent2: #8b5cf6;
+      --accent2-glow: rgba(139, 92, 246, 0.4);
+      --font-heading: 'Orbitron', sans-serif;
+      --font-body: 'JetBrains Mono', monospace;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 4rem 0 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    header p {
-      color: var(--muted);
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
-
-    header nav {
-      margin-top: 1.25rem;
-      display: flex;
-      gap: 1.25rem;
-    }
-
-    header nav a {
-      color: var(--muted);
-      text-decoration: none;
+      font-family: var(--font-body);
       font-size: 0.875rem;
-      transition: color 0.15s;
+      min-height: 100vh;
+      padding: 0 1.5rem 3rem;
+      overflow-x: hidden;
     }
 
-    header nav a:hover { color: var(--text); }
+    /* Scanline overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+    }
 
-    main {
+    /* Background canvas */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
       max-width: 860px;
       margin: 0 auto;
-      padding: 3rem 0 6rem;
+      padding: 6rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      border-image: linear-gradient(90deg, transparent, var(--accent), transparent) 1;
+      animation: fadeInUp 0.8s ease-out;
     }
 
-    .section-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .hero-hud {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
 
+    .hud-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    .hud-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hud-sep {
+      color: var(--muted);
+      opacity: 0.3;
+      margin: 0 0.25rem;
+    }
+
+    /* Glitch heading */
+    .glitch {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--text);
+      position: relative;
+      text-shadow: 0 0 20px var(--accent-glow), 0 0 60px rgba(0, 240, 255, 0.1);
+      letter-spacing: -0.02em;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: var(--accent);
+      z-index: -1;
+      animation: glitch-1 6s infinite linear;
+    }
+
+    .glitch::after {
+      color: var(--accent2);
+      z-index: -2;
+      animation: glitch-2 6s infinite linear;
+    }
+
+    @keyframes glitch-1 {
+      0%, 1.5% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      1.6% { clip-path: inset(20% 0 40% 0); transform: translate(-3px, 1px); }
+      2.2% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+      2.8% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      3%, 49% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      49.5% { clip-path: inset(40% 0 30% 0); transform: translate(2px); opacity: 0.8; }
+      50% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 2px); }
+      50.5% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      51%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    @keyframes glitch-2 {
+      0%, 25% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      25.5% { clip-path: inset(50% 0 20% 0); transform: translate(3px, -1px); opacity: 0.8; }
+      26% { clip-path: inset(15% 0 55% 0); transform: translate(-2px, 1px); }
+      26.5% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      27%, 74% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      74.5% { clip-path: inset(30% 0 40% 0); transform: translate(-3px); opacity: 0.8; }
+      75% { clip-path: inset(70% 0 5% 0); transform: translate(2px, 2px); }
+      75.5% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      76%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    /* Typing tagline */
+    .hero-tagline {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .typing-prefix {
+      color: var(--accent);
+      margin-right: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .cursor {
+      display: inline-block;
+      color: var(--accent);
+      animation: blink 1s step-end infinite;
+      margin-left: 1px;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Hero nav */
+    .hero-nav {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .bracket {
+      color: var(--accent);
+      opacity: 0.4;
+    }
+
+    .nav-link:hover .bracket { opacity: 1; }
+
+    /* ─── Section Header ─── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .section-marker {
+      color: var(--accent);
+      font-weight: 700;
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .section-status {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* ─── Main ─── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+
+    /* ─── Projects Grid ─── */
     .projects {
       display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
     }
 
     .project {
       background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .project:hover::before {
+      left: 100%;
+    }
+
+    .project::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      border-top: 1px solid var(--accent);
+      border-left: 1px solid var(--accent);
+      opacity: 0.2;
+      transition: opacity 0.3s;
+    }
+
+    .project:hover {
+      border-color: rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.06), inset 0 0 25px rgba(0, 240, 255, 0.02);
+      transform: translateY(-2px);
+    }
+
+    .project:hover::after { opacity: 0.5; }
+
+    .project-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.15s;
     }
 
-    .project:hover { background: #161616; }
-
-    .project-info { flex: 1; }
-
     .project-name {
-      font-size: 1rem;
-      font-weight: 600;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
       color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .project-arrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+      opacity: 0.3;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .project:hover .project-arrow {
+      opacity: 1;
+      transform: translate(2px, -2px);
     }
 
     .project-desc {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .project-tags {
       display: flex;
       gap: 0.5rem;
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
       flex-wrap: wrap;
     }
 
     .tag {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 500;
       padding: 0.2rem 0.6rem;
       border-radius: 99px;
       background: var(--accent-dim);
       color: var(--accent);
-      letter-spacing: 0.02em;
+      border: 1px solid rgba(0, 240, 255, 0.1);
+      letter-spacing: 0.03em;
     }
 
-    .project-arrow {
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin-top: 0.1rem;
-      flex-shrink: 0;
-    }
-
+    /* Empty state */
     .empty {
-      padding: 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.875rem;
-      background: var(--surface);
-    }
-
-    footer {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
+      grid-column: 1 / -1;
+      padding: 3rem 2rem;
+      text-align: left;
       color: var(--muted);
       font-size: 0.8rem;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+
+    .empty .prompt {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .empty .output {
+      opacity: 0.5;
+    }
+
+    /* ─── Footer Status Bar ─── */
+    .status-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(5, 5, 10, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 0.45rem 1.5rem;
+      font-size: 0.65rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+    }
+
+    .status-left, .status-right, .status-center {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-indicator {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #3fb950;
+      box-shadow: 0 0 6px rgba(63, 185, 80, 0.5);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .status-sep {
+      opacity: 0.3;
+    }
+
+    .status-center {
+      color: var(--accent);
+      opacity: 0.5;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .glitch { font-size: 2rem; }
+      .projects { grid-template-columns: 1fr; }
+      .hero { padding: 4rem 0 2rem; }
+      .status-center { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Grant Finale</h1>
-    <p>Building things with code.</p>
-    <nav>
-      <a href="https://github.com/GrantFinale" target="_blank">GitHub</a>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ─── Hero ─── -->
+  <header class="hero">
+    <div class="hero-hud">
+      <span class="hud-label">SYS.ONLINE</span>
+      <span class="hud-dot"></span>
+      <span class="hud-sep">/</span>
+      <span class="hud-label">NODE:5STORY</span>
+    </div>
+    <h1 class="glitch" data-text="Grant Finale">Grant Finale</h1>
+    <p class="hero-tagline">
+      <span class="typing-prefix">&gt;</span>
+      <span id="typed-text"></span><span class="cursor">_</span>
+    </p>
+    <nav class="hero-nav">
+      <a href="https://github.com/GrantFinale" target="_blank" class="nav-link">
+        <span class="bracket">[</span> GitHub <span class="bracket">]</span>
+      </a>
     </nav>
   </header>
 
+  <!-- ─── Main ─── -->
   <main>
-    <p class="section-title">Projects</p>
+    <div class="section-header">
+      <span class="section-marker">//</span>
+      <p class="section-title">Projects</p>
+      <span class="section-line"></span>
+      <span class="section-status">LOADED</span>
+    </div>
     <div class="projects" id="projects">
-      <div class="empty">No projects yet — check back soon.</div>
+      <div class="empty">
+        <span class="prompt">$</span> ls ./projects<br>
+        <span class="output">No entries found. Initializing...</span>
+        <span class="cursor">_</span>
+      </div>
     </div>
   </main>
 
-  <footer>
-    <span>5story.com</span>
-    <span>Grant Finale</span>
+  <!-- ─── Status Bar Footer ─── -->
+  <footer class="status-bar">
+    <div class="status-left">
+      <span class="status-indicator"></span>
+      <span>5story.com</span>
+    </div>
+    <div class="status-center">
+      <span id="clock">--:--:--</span>
+    </div>
+    <div class="status-right">
+      <span>Grant Finale</span>
+      <span class="status-sep">|</span>
+      <span>v1.0.0</span>
+    </div>
   </footer>
 
   <script>
+    // ─── Particle Canvas ───
+    (function() {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      const COUNT = window.innerWidth < 600 ? 40 : 80;
+      const MAX_DIST = 150;
+      let particles = [];
+      let w, h;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+
+      function init() {
+        resize();
+        particles = [];
+        for (let i = 0; i < COUNT; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 1.5 + 0.5
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 240, 255, 0.3)';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'rgba(0, 240, 255, 0.2)';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const dx = p.x - q.x;
+            const dy = p.y - q.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MAX_DIST) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 * (1 - dist / MAX_DIST)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      init();
+      draw();
+    })();
+
+    // ─── Typing Animation ───
+    (function() {
+      const phrases = [
+        'Building things with code.',
+        'Full-stack developer.',
+        'AI-augmented engineering.',
+        'Deploying to the edge.'
+      ];
+      const el = document.getElementById('typed-text');
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let deleting = false;
+
+      function tick() {
+        const phrase = phrases[phraseIdx];
+        if (!deleting) {
+          el.textContent = phrase.slice(0, charIdx + 1);
+          charIdx++;
+          if (charIdx >= phrase.length) {
+            setTimeout(() => { deleting = true; tick(); }, 2000);
+            return;
+          }
+          setTimeout(tick, 60);
+        } else {
+          el.textContent = phrase.slice(0, charIdx);
+          charIdx--;
+          if (charIdx < 0) {
+            deleting = false;
+            charIdx = 0;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+            setTimeout(tick, 400);
+            return;
+          }
+          setTimeout(tick, 30);
+        }
+      }
+
+      setTimeout(tick, 800);
+    })();
+
+    // ─── Clock ───
+    (function() {
+      const el = document.getElementById('clock');
+      function update() {
+        const now = new Date();
+        el.textContent = now.toISOString().slice(11, 19) + ' UTC';
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+
+    // ─── Projects ───
     const projects = [
-      // Projects will be added here
       // { name: "My App", desc: "Description", url: "https://...", tags: ["Next.js", "Postgres"] }
     ];
 
     if (projects.length > 0) {
-      const container = document.getElementById("projects");
+      const container = document.getElementById('projects');
       container.innerHTML = projects.map(p => `
         <a class="project" href="${p.url}" target="_blank" rel="noopener">
-          <div class="project-info">
+          <div class="project-header">
             <div class="project-name">${p.name}</div>
-            <div class="project-desc">${p.desc}</div>
-            <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+            <div class="project-arrow">&#8599;</div>
           </div>
-          <div class="project-arrow">↗</div>
+          <div class="project-desc">${p.desc}</div>
+          <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
         </a>
-      `).join("");
+      `).join('');
     }
   </script>
 </body>
