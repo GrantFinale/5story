@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5story — Grant Finale</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --text: #e8e8e8;
+      --muted: #666;
+      --accent: #4f8ef7;
+      --accent-dim: #1a2d4f;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    header nav {
+      margin-top: 1.25rem;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    header nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.15s;
+    }
+
+    header nav a:hover { color: var(--text); }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 0 6rem;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .projects {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .project {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+
+    .project:hover { background: #161616; }
+
+    .project-info { flex: 1; }
+
+    .project-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-desc {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .project-arrow {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .empty {
+      padding: 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+      background: var(--surface);
+    }
+
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Grant Finale</h1>
+    <p>Building things with code.</p>
+    <nav>
+      <a href="https://github.com/GrantFinale" target="_blank">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="section-title">Projects</p>
+    <div class="projects" id="projects">
+      <div class="empty">No projects yet — check back soon.</div>
+    </div>
+  </main>
+
+  <footer>
+    <span>5story.com</span>
+    <span>Grant Finale</span>
+  </footer>
+
+  <script>
+    const projects = [
+      // Projects will be added here
+      // { name: "My App", desc: "Description", url: "https://...", tags: ["Next.js", "Postgres"] }
+    ];
+
+    if (projects.length > 0) {
+      const container = document.getElementById("projects");
+      container.innerHTML = projects.map(p => `
+        <a class="project" href="${p.url}" target="_blank" rel="noopener">
+          <div class="project-info">
+            <div class="project-name">${p.name}</div>
+            <div class="project-desc">${p.desc}</div>
+            <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+          </div>
+          <div class="project-arrow">↗</div>
+        </a>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
