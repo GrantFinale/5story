@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="mblade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="1"/>
+    </linearGradient>
+    <pattern id="mgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0 L0 0 0 20" fill="none" stroke="#8b5cf6" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="mglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#mbg)"/>
+  <rect width="640" height="360" fill="url(#mgrid)"/>
+  <circle cx="320" cy="200" r="160" fill="url(#mglow)"/>
+  <g transform="translate(320 200)">
+    <g stroke="#8b5cf6" stroke-opacity="0.35" fill="none" stroke-width="1">
+      <rect x="-80" y="-80" width="40" height="40"/>
+      <rect x="-40" y="-80" width="40" height="40"/>
+      <rect x="0" y="-80" width="40" height="40"/>
+      <rect x="40" y="-80" width="40" height="40"/>
+      <rect x="-80" y="-40" width="40" height="40"/>
+      <rect x="40" y="-40" width="40" height="40"/>
+      <rect x="-80" y="0" width="40" height="40"/>
+      <rect x="-40" y="0" width="40" height="40"/>
+      <rect x="0" y="0" width="40" height="40"/>
+      <rect x="40" y="0" width="40" height="40"/>
+    </g>
+    <g fill="#00f0ff" fill-opacity="0.12" stroke="#00f0ff" stroke-opacity="0.5" stroke-width="1">
+      <rect x="-40" y="-40" width="40" height="40"/>
+      <rect x="0" y="-40" width="40" height="40"/>
+    </g>
+  </g>
+  <g transform="translate(320 180)">
+    <path d="M0 -70 L10 -40 L6 0 L14 60 L-14 60 L-6 0 L-10 -40 Z" fill="url(#mblade)" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.6"/>
+    <rect x="-28" y="-46" width="56" height="8" rx="2" fill="#8b5cf6" fill-opacity="0.8"/>
+    <circle cx="0" cy="-70" r="4" fill="#00f0ff"/>
+  </g>
+  <g font-family="'Orbitron', monospace" font-weight="900" fill="#e0e8f0">
+    <text x="32" y="52" font-size="14" letter-spacing="4" fill-opacity="0.95">THE&#xA0;REALMS</text>
+    <text x="32" y="72" font-size="8" letter-spacing="2" fill="#8b5cf6" fill-opacity="0.8">// QUESTS &#8250; FORGE &#8250; SHIP</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#00f0ff" fill-opacity="0.6" letter-spacing="2">
+    <text x="32" y="330">LVL 01 &#8250; PROMPT FORGE</text>
+    <text x="460" y="330">XP 340/500</text>
+  </g>
+</svg>

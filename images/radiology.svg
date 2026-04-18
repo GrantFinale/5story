@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="rbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="rwave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#00f0ff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="rgrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0 L0 0 0 32" fill="none" stroke="#00f0ff" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="rglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#rbg)"/>
+  <rect width="640" height="360" fill="url(#rgrid)"/>
+  <circle cx="320" cy="180" r="150" fill="url(#rglow)"/>
+  <g transform="translate(320 180)" fill="none" stroke="#00f0ff" stroke-width="2" stroke-opacity="0.35">
+    <circle r="60"/>
+    <circle r="90" stroke-opacity="0.2"/>
+    <circle r="120" stroke-opacity="0.1"/>
+  </g>
+  <g transform="translate(320 180)" fill="#00f0ff" fill-opacity="0.9">
+    <rect x="-10" y="-40" width="20" height="80" rx="2"/>
+    <rect x="-40" y="-10" width="80" height="20" rx="2"/>
+  </g>
+  <path d="M40 220 L120 220 L140 180 L160 260 L180 200 L200 240 L220 220 L600 220" fill="none" stroke="url(#rwave)" stroke-width="2"/>
+  <g font-family="'Orbitron', monospace" font-weight="700" fill="#e0e8f0">
+    <text x="32" y="56" font-size="13" letter-spacing="3" fill-opacity="0.85">RADIOLOGY.IO</text>
+    <text x="32" y="76" font-size="8" letter-spacing="2" fill="#8b5cf6" fill-opacity="0.7">// HL7 / FHIR / NLP</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="8" fill="#00f0ff" fill-opacity="0.5">
+    <text x="560" y="56" letter-spacing="1">ONLINE</text>
+    <circle cx="550" cy="52" r="3" fill="#3fb950"/>
+  </g>
+</svg>

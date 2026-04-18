@@ -333,6 +333,56 @@
 
     .project:hover::after { opacity: 0.5; }
 
+    .project-image-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.04), rgba(139, 92, 246, 0.04));
+      transition: border-color 0.3s;
+    }
+
+    .project:hover .project-image-wrap {
+      border-color: rgba(0, 240, 255, 0.25);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease, filter 0.6s ease;
+      filter: brightness(0.85) saturate(1.1);
+    }
+
+    .project:hover .project-image {
+      transform: scale(1.04);
+      filter: brightness(1) saturate(1.2);
+    }
+
+    .project-status {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.2rem 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      color: #c4a8ff;
+      border-radius: 3px;
+      animation: statusPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { opacity: 0.9; box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.25); }
+      50% { opacity: 1; box-shadow: 0 0 12px 0 rgba(139, 92, 246, 0.35); }
+    }
+
     .project-header {
       display: flex;
       justify-content: space-between;
@@ -651,14 +701,21 @@
 
     // ─── Projects ───
     const projects = [
-      { name: "Radiology Interoperability Platform", desc: "Automates radiology order intake, OCR interpretation, clinical NLP, revenue cycle validation, scheduling readiness, and EMR integrations (HL7v2, FHIR R4, Epic, Cerner).", url: "https://radiology.5story.com", tags: ["Node.js", "Python", "FastAPI", "HL7v2", "FHIR R4", "NLP", "Docker"] },
-      { name: "Insurance Lead Platform", desc: "Multi-step insurance quote forms with lead routing, funnel analytics, and admin dashboard.", url: "https://insurance.5story.com", tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"] }
+      { name: "Radiology Interoperability Platform", desc: "Automates radiology order intake, OCR interpretation, clinical NLP, revenue cycle validation, scheduling readiness, and EMR integrations (HL7v2, FHIR R4, Epic, Cerner).", url: "https://radiology.5story.com", image: "images/radiology.svg", tags: ["Node.js", "Python", "FastAPI", "HL7v2", "FHIR R4", "NLP", "Docker"] },
+      { name: "Insurance Lead Platform", desc: "Multi-step insurance quote forms with lead routing, funnel analytics, and admin dashboard.", url: "https://insurance.5story.com", image: "images/insurance.svg", tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"] },
+      { name: "Racer Dashboard", desc: "Running analytics that turns race results into identity \u2014 cohort discovery, course leaderboards, trophy exports, clubs, and head-to-head comparisons.", url: "https://racer.5story.com", image: "images/racer.svg", tags: ["Next.js 15", "React 19", "Prisma", "PostgreSQL", "Tailwind", "Zod", "Vitest"] },
+      { name: "Wildprint", desc: "Custom wildlife posters for any body of water in America \u2014 habitat-scored species matched to your lake, rendered as editorial-grade prints with AI-generated illustrations.", url: "https://wildlife.5story.com", image: "images/wildlife.svg", tags: ["Python", "Flask", "OpenAI gpt-image-1", "Replicate Flux", "Pillow", "Leaflet", "Coolify"] },
+      { name: "The Realms", desc: "A gamified AI apprenticeship for kids \u2014 Prompt Forge, Build Bay, and Creation Studio quests that ship real artifacts to public URLs with per-kid cost caps and a weekly safety audit.", url: "https://app.5story.com", image: "images/realms.svg", status: "in progress", tags: ["Next.js 15", "Drizzle", "PostgreSQL", "Anthropic", "ElevenLabs", "FLUX", "Caddy"] }
     ];
 
     if (projects.length > 0) {
       const container = document.getElementById('projects');
       container.innerHTML = projects.map(p => `
         <a class="project" href="${p.url}" target="_blank" rel="noopener">
+          <div class="project-image-wrap">
+            <img class="project-image" src="${p.image}" alt="${p.name} thumbnail" loading="lazy">
+            ${p.status ? `<span class="project-status">${p.status}</span>` : ''}
+          </div>
           <div class="project-header">
             <div class="project-name">${p.name}</div>
             <div class="project-arrow">&#8599;</div>
