@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ybg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="ytrail" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0.8"/>
+    </linearGradient>
+    <pattern id="ygrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0 L0 0 0 24" fill="none" stroke="#00f0ff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="yglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#ybg)"/>
+  <rect width="640" height="360" fill="url(#ygrid)"/>
+  <circle cx="330" cy="170" r="150" fill="url(#yglow)"/>
+  <g fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-opacity="0.45">
+    <path d="M150 290 L230 250 L310 262 L390 210 L470 150"/>
+  </g>
+  <g fill="#8b5cf6" fill-opacity="0.8">
+    <circle cx="150" cy="290" r="4"/>
+    <circle cx="230" cy="250" r="4"/>
+    <circle cx="310" cy="262" r="4"/>
+    <circle cx="390" cy="210" r="4"/>
+  </g>
+  <g transform="translate(470 150) rotate(35)">
+    <rect x="-5" y="18" width="10" height="70" fill="url(#ytrail)"/>
+    <path d="M0 -40 C 14 -24 16 0 12 22 L -12 22 C -16 0 -14 -24 0 -40 Z" fill="#00f0ff" fill-opacity="0.15" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.85"/>
+    <path d="M-12 8 L -24 26 L -12 22 Z M12 8 L 24 26 L 12 22 Z" fill="#8b5cf6" fill-opacity="0.8"/>
+    <circle cx="0" cy="-8" r="5" fill="none" stroke="#e0e8f0" stroke-width="1.2" stroke-opacity="0.8"/>
+  </g>
+  <g font-family="'Orbitron', monospace" font-weight="900" fill="#e0e8f0">
+    <text x="32" y="52" font-size="14" letter-spacing="4" fill-opacity="0.95">YOUNG&#xA0;FOUNDERS&#xA0;AI</text>
+    <text x="32" y="72" font-size="8" letter-spacing="2" fill="#00f0ff" fill-opacity="0.7">// LEARN &#8250; INNOVATE &#8250; LAUNCH</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#8b5cf6" fill-opacity="0.6" letter-spacing="2">
+    <text x="32" y="330">AGES 10&#8211;16</text>
+    <text x="490" y="330">T-MINUS 00:03</text>
+  </g>
+</svg>

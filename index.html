@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5 Story Labs</title>
+  <meta name="description" content="5 Story Labs &mdash; a portfolio of products and companies by Grant Finale, from healthcare interoperability and AI education to cybersecurity, real estate, and an artisan bakery." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -275,7 +276,7 @@
     /* ─── Projects Grid ─── */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
       gap: 1rem;
       animation: fadeInUp 0.8s ease-out 0.4s both;
     }
@@ -565,7 +566,7 @@
   <footer class="status-bar">
     <div class="status-left">
       <span class="status-indicator"></span>
-      <span>5storylabs.com</span>
+      <span>5story.com</span>
     </div>
     <div class="status-center">
       <span id="clock">--:--:--</span>
@@ -701,11 +702,17 @@
 
     // ─── Projects ───
     const projects = [
-      { name: "Radiology Interoperability Platform", desc: "Automates radiology order intake, OCR interpretation, clinical NLP, revenue cycle validation, scheduling readiness, and EMR integrations (HL7v2, FHIR R4, Epic, Cerner).", url: "https://radiology.5story.com", image: "images/radiology.svg", tags: ["Node.js", "Python", "FastAPI", "HL7v2", "FHIR R4", "NLP", "Docker"] },
-      { name: "Insurance Lead Platform", desc: "Multi-step insurance quote forms with lead routing, funnel analytics, and admin dashboard.", url: "https://insurance.5story.com", image: "images/insurance.svg", tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind"] },
-      { name: "Racer Dashboard", desc: "Running analytics that turns race results into identity \u2014 cohort discovery, course leaderboards, trophy exports, clubs, and head-to-head comparisons.", url: "https://racer.5story.com", image: "images/racer.svg", tags: ["Next.js 15", "React 19", "Prisma", "PostgreSQL", "Tailwind", "Zod", "Vitest"] },
-      { name: "Wildprint", desc: "Custom wildlife posters for any body of water in America \u2014 habitat-scored species matched to your lake, rendered as editorial-grade prints with AI-generated illustrations.", url: "https://wildlife.5story.com", image: "images/wildlife.svg", tags: ["Python", "Flask", "OpenAI gpt-image-1", "Replicate Flux", "Pillow", "Leaflet", "Coolify"] },
-      { name: "The Realms", desc: "A gamified AI apprenticeship for kids \u2014 Prompt Forge, Build Bay, and Creation Studio quests that ship real artifacts to public URLs with per-kid cost caps and a weekly safety audit.", url: "https://app.5story.com", image: "images/realms.svg", status: "in progress", tags: ["Next.js 15", "Drizzle", "PostgreSQL", "Anthropic", "ElevenLabs", "FLUX", "Caddy"] }
+      { name: "Radiology Interoperability Platform", desc: "Normalizes radiology orders arriving by HL7, FHIR, fax, and EMR portal \u2014 OCR and clinical NLP extract the details, then revenue-cycle checks validate scheduling readiness before a patient is ever booked.", url: "https://radiology.5story.com", image: "images/radiology.svg", tags: ["Node.js", "Python", "FastAPI", "HL7v2", "FHIR R4", "NLP", "Docker"] },
+      { name: "FishingPoster", desc: "A bespoke, fully illustrated field guide to the fish and wildlife in your lake \u2014 species drawn from DNR, USGS, eBird, and iNaturalist records and rendered as AI-generated naturalist posters.", url: "https://fishingposter.com", image: "images/wildlife.svg", tags: ["Python", "OpenAI gpt-image-1", "Replicate Flux", "Pillow", "Open Data"] },
+      { name: "Realms of AI", desc: "An original fantasy-academy adventure that teaches kids to use AI like a pro \u2014 quests that end in real, shipped creations, with parent dashboards and per-kid safety controls.", url: "https://app.5story.com", image: "images/realms.svg", status: "in progress", tags: ["Next.js 15", "Drizzle", "PostgreSQL", "Anthropic", "ElevenLabs", "FLUX"] },
+      { name: "Young Founders AI", desc: "Learn. Innovate. Launch. An entrepreneur academy for ages 10\u201316 where kids find real business problems, direct AI, and ship working software. Home of Realms of AI.", url: "https://youngfoundersai.com", image: "images/youngfounders.svg", tags: ["Next.js", "AI Education", "Entrepreneurship"] },
+      { name: "BreachBack", desc: "Tested ransomware recovery for small and mid-sized businesses \u2014 live recovery drills, immutable backups, and timestamped proof you can restore operations in hours, not weeks.", url: "https://breachback.com", image: "images/breachback.svg", tags: ["Next.js", "Cybersecurity", "Disaster Recovery", "HIPAA"] },
+      { name: "Housing Unpacked", desc: "An independent publication on why housing costs what it costs \u2014 tracing rent back to the rules, capital, and construction behind it, with the math shown at every step.", url: "https://housingunpacked.com", image: "images/housing.svg", tags: ["Next.js", "Publication", "Housing Economics"] },
+      { name: "JourneyPerfect", desc: "A vacation planner that puts flights, hotels, activities, budget, and a day-by-day itinerary in one place \u2014 with travel-time math and conflict detection built in.", url: "https://journeyperfect.com", image: "images/journeyperfect.svg", tags: ["Next.js", "PostgreSQL", "Travel", "Maps"] },
+      { name: "Stumpy Monster", desc: "A merch and lifestyle brand built around a legendary creature of the Thornapple River \u2014 apparel and goods, field notes from the bend, and a summer cult following since 2018.", url: "https://stumpymonster.com", image: "images/stumpy.svg", tags: ["Brand", "Merch", "Next.js"] },
+      { name: "Carbon River Capital", desc: "A Grand Rapids private equity and real estate investment firm focused on value-add commercial real estate, sale-leasebacks, and special situations across West Michigan.", url: "https://carbonrivercapital.com", image: "images/carbonriver.svg", tags: ["Private Equity", "Real Estate", "West Michigan"] },
+      { name: "Third Coast Development", desc: "A Grand Rapids developer that designs, builds, and operates industrial build-to-suits and multifamily projects \u2014 $500M+ developed across West Michigan since 2004.", url: "https://thirdcoastdevelopment.com", image: "images/thirdcoast.svg", tags: ["Real Estate", "Industrial", "Multifamily", "Build-to-Suit"] },
+      { name: "Schnitz Bakery", desc: "Artisan bread baked daily in Grand Rapids \u2014 fresh next-day deliveries, wholesale for local restaurants, and online ordering.", url: "https://schnitz.5story.com", image: "images/schnitz.svg", tags: ["Artisan Bakery", "Wholesale", "Online Ordering", "Grand Rapids"] }
     ];
 
     if (projects.length > 0) {

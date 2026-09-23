@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="bshield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="bgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0 L0 0 0 20" fill="none" stroke="#00f0ff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="bglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bbg)"/>
+  <rect width="640" height="360" fill="url(#bgrid)"/>
+  <circle cx="320" cy="195" r="150" fill="url(#bglow)"/>
+  <g transform="translate(320 195)" fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-opacity="0.5" stroke-linecap="round">
+    <path d="M-120 0 A 120 120 0 1 1 -85 85"/>
+    <path d="M-85 85 L -92 64 M -85 85 L -64 90"/>
+  </g>
+  <g transform="translate(320 195)">
+    <path d="M0 -72 L 58 -50 L 58 4 C 58 40 30 64 0 78 C -30 64 -58 40 -58 4 L -58 -50 Z" fill="url(#bshield)" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.85"/>
+    <path d="M-22 2 L -6 18 L 26 -16" fill="none" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#00f0ff" fill-opacity="0.5" letter-spacing="1">
+    <text x="470" y="120">RESTORE ........ OK</text>
+    <text x="470" y="134">IMMUTABLE ...... OK</text>
+    <text x="470" y="148">DRILL #12 ...... PASS</text>
+  </g>
+  <g font-family="'Orbitron', monospace" font-weight="900" fill="#e0e8f0">
+    <text x="32" y="52" font-size="14" letter-spacing="4" fill-opacity="0.95">BREACHBACK</text>
+    <text x="32" y="72" font-size="8" letter-spacing="2" fill="#00f0ff" fill-opacity="0.7">// BACKUP &#8250; DRILL &#8250; RECOVER</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#8b5cf6" fill-opacity="0.6" letter-spacing="2">
+    <text x="32" y="330">RTO 04:00:00</text>
+    <text x="480" y="330">EVIDENCE LOGGED</text>
+  </g>
+</svg>

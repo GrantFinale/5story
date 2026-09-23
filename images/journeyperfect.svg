@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="jbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <pattern id="jgrid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0 L0 0 0 36" fill="none" stroke="#00f0ff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="jglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#jbg)"/>
+  <rect width="640" height="360" fill="url(#jgrid)"/>
+  <ellipse cx="320" cy="200" rx="240" ry="130" fill="url(#jglow)"/>
+  <path d="M110 270 Q 220 110 330 190 T 540 110" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.7" stroke-dasharray="6 5"/>
+  <g fill="#050508" stroke="#8b5cf6" stroke-width="1.5">
+    <circle cx="110" cy="270" r="6"/>
+    <circle cx="330" cy="190" r="6"/>
+  </g>
+  <g transform="translate(540 110)">
+    <path d="M0 0 C -12 -12 -12 -30 0 -34 C 12 -30 12 -12 0 0 Z" transform="translate(0 -2)" fill="#8b5cf6" fill-opacity="0.8" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.6"/>
+    <circle cx="0" cy="-22" r="4" fill="#050508"/>
+  </g>
+  <g transform="translate(225 150) rotate(-35)" fill="#00f0ff" fill-opacity="0.85">
+    <path d="M-18 0 L 18 0 L 24 -3 L 24 3 L 18 0 Z M-4 0 L -12 -14 L -6 -14 L 6 0 Z M-4 0 L -12 14 L -6 14 L 6 0 Z M-16 0 L -20 -6 L -17 -6 L -12 0 Z M-16 0 L -20 6 L -17 6 L -12 0 Z"/>
+    <rect x="-18" y="-2" width="40" height="4" rx="2"/>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#e0e8f0" fill-opacity="0.55" letter-spacing="1">
+    <text x="90" y="292">DAY 1</text>
+    <text x="312" y="212">DAY 4</text>
+    <text x="520" y="132">DAY 7</text>
+  </g>
+  <g font-family="'Orbitron', monospace" font-weight="900" fill="#e0e8f0">
+    <text x="32" y="52" font-size="14" letter-spacing="4" fill-opacity="0.95">JOURNEYPERFECT</text>
+    <text x="32" y="72" font-size="8" letter-spacing="2" fill="#00f0ff" fill-opacity="0.7">// FLIGHTS &#8250; STAYS &#8250; ITINERARY</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#8b5cf6" fill-opacity="0.6" letter-spacing="2">
+    <text x="32" y="330">0 CONFLICTS</text>
+    <text x="490" y="330">BUDGET ON TRACK</text>
+  </g>
+</svg>

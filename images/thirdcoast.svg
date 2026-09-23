@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="tbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050508"/>
+      <stop offset="1" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <pattern id="tgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0 L0 0 0 20" fill="none" stroke="#00f0ff" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="tglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00f0ff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#tbg)"/>
+  <rect width="640" height="360" fill="url(#tgrid)"/>
+  <ellipse cx="320" cy="230" rx="260" ry="110" fill="url(#tglow)"/>
+  <g fill="#00f0ff" fill-opacity="0.08" stroke="#00f0ff" stroke-width="1.4" stroke-opacity="0.8" stroke-linejoin="round">
+    <path d="M80 280 L 80 210 L 300 190 L 300 280 Z"/>
+    <path d="M300 190 L 360 206 L 360 280 L 300 280 Z" fill-opacity="0.04"/>
+  </g>
+  <g fill="none" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="1">
+    <rect x="110" y="240" width="26" height="40"/>
+    <rect x="150" y="240" width="26" height="40"/>
+    <rect x="190" y="240" width="26" height="40"/>
+    <rect x="230" y="240" width="26" height="40"/>
+  </g>
+  <g fill="#8b5cf6" fill-opacity="0.14" stroke="#8b5cf6" stroke-width="1.4" stroke-opacity="0.8">
+    <rect x="420" y="140" width="110" height="140"/>
+  </g>
+  <g fill="#8b5cf6" fill-opacity="0.5">
+    <rect x="434" y="156" width="14" height="10"/><rect x="468" y="156" width="14" height="10"/><rect x="502" y="156" width="14" height="10"/>
+    <rect x="434" y="182" width="14" height="10"/><rect x="468" y="182" width="14" height="10"/><rect x="502" y="182" width="14" height="10"/>
+    <rect x="434" y="208" width="14" height="10"/><rect x="468" y="208" width="14" height="10"/><rect x="502" y="208" width="14" height="10"/>
+    <rect x="434" y="234" width="14" height="10"/><rect x="502" y="234" width="14" height="10"/>
+  </g>
+  <g stroke="#e0e8f0" stroke-opacity="0.35" stroke-width="1" fill="none">
+    <path d="M570 280 L 570 90 L 470 90 M570 110 L 545 90"/>
+    <path d="M490 90 L 490 118" stroke-dasharray="2 2"/>
+  </g>
+  <line x1="40" y1="280" x2="600" y2="280" stroke="#e0e8f0" stroke-opacity="0.3" stroke-width="1"/>
+  <g font-family="'Orbitron', monospace" font-weight="900" fill="#e0e8f0">
+    <text x="32" y="52" font-size="14" letter-spacing="4" fill-opacity="0.95">THIRD&#xA0;COAST&#xA0;DEVELOPMENT</text>
+    <text x="32" y="72" font-size="8" letter-spacing="2" fill="#00f0ff" fill-opacity="0.7">// INDUSTRIAL &#8250; MULTIFAMILY &#8250; BUILD-TO-SUIT</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="7" fill="#8b5cf6" fill-opacity="0.6" letter-spacing="2">
+    <text x="32" y="330">WEST MICHIGAN</text>
+    <text x="510" y="330">SINCE 2004</text>
+  </g>
+</svg>
